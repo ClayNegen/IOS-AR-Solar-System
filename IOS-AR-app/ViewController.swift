@@ -65,6 +65,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.1, planet: saturn, duration: 0.4)
         rotateObject(rotation: 0.1, planet: saturnRing, duration: 1)
         
+        let saturnLoop = SCNBox(width: 0.4, height: 0, length: 0.5, chamferRadius: 0)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named:"saturnRing.jpg")
+        saturnLoop.materials = [material]
+        
+        let loopNode = SCNNode(geometry: saturnLoop)
+        loopNode.position = SCNVector3(x:0,y:0,z:0)
+        
         let uranusRing = createRing(ringSize: 1.4)
         let uranus = createPlanet(radius: 0.03, image: "uranus")
         uranus.position = SCNVector3(x:1.4, y: 0, z: 0)
@@ -99,6 +107,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         marsRing.addChildNode(mars)
         jupiterRing.addChildNode(jupiter)
         saturnRing.addChildNode(saturn)
+        saturn.addChildNode(loopNode)
         uranusRing.addChildNode(uranus)
         neptuneRing.addChildNode(neptune)
         plutoRing.addChildNode(pluto)
