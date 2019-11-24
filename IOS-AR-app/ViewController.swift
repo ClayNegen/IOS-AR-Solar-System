@@ -26,7 +26,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let sun = createPlanet(radius: 0.25, image: "sun")
         sun.position = SCNVector3(x:0,y:0,z:0)
-        
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
         let mercuryRing = createRing(ringSize: 0.3)
@@ -36,9 +35,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.6, planet: mercury, duration: 0.4)
         rotateObject(rotation: 0.6, planet: mercuryRing, duration: 1)
         
+        let venusRing = createRing(ringSize: 0.5)
+        let venus = createPlanet(radius: 0.04, image: "venus")
+        venus.position = SCNVector3(x:0.5 , y: 0, z: 0)
+        
+        rotateObject(rotation: 0.4, planet: venus, duration: 0.4)
+        rotateObject(rotation: 0.4, planet: venusRing, duration: 0)
+        
         mercuryRing.addChildNode(mercury)
+        venusRing.addChildNode(venus)
+        
         baseNode.addChildNode(sun)
         baseNode.addChildNode(mercuryRing)
+        baseNode.addChildNode(venusRing)
+        
         baseNode.position = SCNVector3(x: 0 ,y: -0.5 ,z: -1)
         
         // Create a new scene
