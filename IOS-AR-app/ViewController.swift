@@ -65,9 +65,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.1, planet: saturn, duration: 0.4)
         rotateObject(rotation: 0.1, planet: saturnRing, duration: 1)
         
-        let saturnLoop = SCNBox(width: 0.4, height: 0, length: 0.5, chamferRadius: 0)
+        let saturnLoop = SCNBox(width: 0.125, height: 0, length: 0.125, chamferRadius: 0)
         let material = SCNMaterial()
-        material.diffuse.contents = UIImage(named:"saturnRing.jpg")
+        material.diffuse.contents = UIImage(named:"saturnring.jpg")
         saturnLoop.materials = [material]
         
         let loopNode = SCNNode(geometry: saturnLoop)
