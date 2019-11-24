@@ -13,7 +13,8 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
-    
+        
+    let baseNode = SCNNode()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,20 +25,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         let sun = createPlanet(radius: 0.25, image: "sun")
-        sun.position = SCNVector3(x:0,y:-0.5,z:-1)
+        sun.position = SCNVector3(x:0,y:0,z:0)
         
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
         let mercuryRing = createRing(ringSize: 0.3)
+        let mercury = createPlanet(radius: 0.03, image: "mercury")
+        mercury.position = SCNVector3(x: 0.3 ,y: 0, z: 0)
         
-        sun.addChildNode(mercuryRing)
+        rotateObject(rotation: 0.6, planet: mercury, duration: 0.4)
+        rotateObject(rotation: 0.6, planet: mercuryRing, duration: 1)
+        
+        mercuryRing.addChildNode(mercury)
+        baseNode.addChildNode(sun)
+        baseNode.addChildNode(mercuryRing)
+        baseNode.position = SCNVector3(x: 0 ,y: -0.5 ,z: -1)
         
         // Create a new scene
         let scene = SCNScene()
         
         // Set the scene to the view
         sceneView.scene = scene
-        sceneView.scene.rootNode.addChildNode(sun)
+        sceneView.scene.rootNode.addChildNode(baseNode)
     }
     
     func createPlanet(radius: Float, image: String) -> SCNNode{
