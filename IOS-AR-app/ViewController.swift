@@ -28,6 +28,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
+        let mercuryRing = createRing(ringSize: 0.3)
+        
+        sun.addChildNode(mercuryRing)
+        
         // Create a new scene
         let scene = SCNScene()
         
@@ -51,6 +55,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func rotateObject(rotation: Float, planet: SCNNode, duration: Float){
         let rotation = SCNAction.rotateBy(x:0,y:CGFloat(rotation),z:0, duration: TimeInterval(duration))
         planet.runAction(SCNAction.repeatForever(rotation))
+    }
+    
+    func createRing(ringSize: Float) -> SCNNode {
+        
+        let ring = SCNTorus(ringRadius: CGFloat(ringSize), pipeRadius: 0.002)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIColor.darkGray
+        
+        ring.materials = [material]
+        
+        let ringNode = SCNNode(geometry: ring)
+        
+        return ringNode
     }
     
     override func viewWillAppear(_ animated: Bool) {
