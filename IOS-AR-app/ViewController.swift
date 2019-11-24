@@ -31,23 +31,38 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let mercuryRing = createRing(ringSize: 0.3)
         let mercury = createPlanet(radius: 0.03, image: "mercury")
         mercury.position = SCNVector3(x: 0.3 ,y: 0, z: 0)
-        
         rotateObject(rotation: 0.6, planet: mercury, duration: 0.4)
         rotateObject(rotation: 0.6, planet: mercuryRing, duration: 1)
         
         let venusRing = createRing(ringSize: 0.5)
         let venus = createPlanet(radius: 0.04, image: "venus")
         venus.position = SCNVector3(x:0.5 , y: 0, z: 0)
-        
         rotateObject(rotation: 0.4, planet: venus, duration: 0.4)
-        rotateObject(rotation: 0.4, planet: venusRing, duration: 0)
+        rotateObject(rotation: 0.4, planet: venusRing, duration: 1)
+        
+        let earthRing = createRing(ringSize: 0.7)
+        let earth = createPlanet(radius: 0.05, image: "earth")
+        earth.position = SCNVector3(x:0.7 , y: 0, z: 0)
+        rotateObject(rotation: 0.25, planet: earth, duration: 0.4)
+        rotateObject(rotation: 0.25, planet: earthRing, duration: 1)
+        
+        
+        let marsRing = createRing(ringSize: 0.9)
+        let mars = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:0.9 , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
         
         mercuryRing.addChildNode(mercury)
         venusRing.addChildNode(venus)
+        earthRing.addChildNode(earth)
+        marsRing.addChildNode(mars)
         
         baseNode.addChildNode(sun)
         baseNode.addChildNode(mercuryRing)
         baseNode.addChildNode(venusRing)
+        baseNode.addChildNode(earthRing)
+        baseNode.addChildNode(marsRing)
         
         baseNode.position = SCNVector3(x: 0 ,y: -0.5 ,z: -1)
         
