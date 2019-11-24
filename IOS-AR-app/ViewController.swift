@@ -47,9 +47,39 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.25, planet: earthRing, duration: 1)
         
         
-        let marsRing = createRing(ringSize: 0.9)
+        let marsRing = createRing(ringSize: 0.8)
         let mars = createPlanet(radius: 0.03, image: "mars")
-        mars.position = SCNVector3(x:0.9 , y: 0, z: 0)
+        mars.position = SCNVector3(x:0.8 , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
+        
+        let jupiterRing = createRing(ringSize: 1.0)
+        let jupiter = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:1.0 , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
+        
+        let saturnRing = createRing(ringSize: 1.2)
+        let saturn = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:1.2 , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
+        
+        let uranusRing = createRing(ringSize: 1.4)
+        let uranus = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:1.4  , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
+        
+        let neptuneRing = createRing(ringSize: 1.6)
+        let neptune = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:1.6 , y: 0, z: 0)
+        rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
+        rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
+        
+        let plutoRing = createRing(ringSize: 1.7)
+        let pluto = createPlanet(radius: 0.03, image: "mars")
+        mars.position = SCNVector3(x:1.7 , y: 0, z: 0)
         rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
         rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
         
@@ -57,12 +87,22 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         venusRing.addChildNode(venus)
         earthRing.addChildNode(earth)
         marsRing.addChildNode(mars)
+        jupiterRing.addChildNode(jupiter)
+        saturnRing.addChildNode(saturn)
+        uranusRing.addChildNode(uranus)
+        neptuneRing.addChildNode(neptune)
+        plutoRing.addChildNode(pluto)
         
         baseNode.addChildNode(sun)
         baseNode.addChildNode(mercuryRing)
         baseNode.addChildNode(venusRing)
         baseNode.addChildNode(earthRing)
         baseNode.addChildNode(marsRing)
+        baseNode.addChildNode(jupiterRing)
+        baseNode.addChildNode(saturnRing)
+        baseNode.addChildNode(uranusRing)
+        baseNode.addChildNode(neptuneRing)
+        baseNode.addChildNode(plutoRing)
         
         baseNode.position = SCNVector3(x: 0 ,y: -0.5 ,z: -1)
         
