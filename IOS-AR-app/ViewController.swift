@@ -26,6 +26,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let sun = createPlanet(radius: 0.25, image: "sun")
         sun.position = SCNVector3(x:0,y:-0.5,z:-1)
         
+        rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
         // Create a new scene
         let scene = SCNScene()
@@ -45,6 +46,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         
         return planetNode
+    }
+    
+    func rotateObject(rotation: Float, planet: SCNNode, duration: Float){
+        let rotation = SCNAction.rotateBy(x:0,y:CGFloat(rotation),z:0, duration: TimeInterval(duration))
+        planet.runAction(SCNAction.repeatForever(rotation))
     }
     
     override func viewWillAppear(_ animated: Bool) {
