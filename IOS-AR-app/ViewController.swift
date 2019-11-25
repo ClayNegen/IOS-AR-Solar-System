@@ -6,6 +6,11 @@
 //  Copyright © 2019 GVSU.CIS. All rights reserved.
 //
 
+//TODO:
+// Add Details of planets when clicked on
+// Landing page?
+// Possibly reposition the sun
+
 import UIKit
 import SceneKit
 import ARKit
@@ -25,23 +30,27 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         let sun = createPlanet(radius: 0.25, image: "sun")
+        sun.name = "sun"
         sun.position = SCNVector3(x:0,y:0,z:0)
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
         let mercuryRing = createRing(ringSize: 0.3)
         let mercury = createPlanet(radius: 0.03, image: "mercury")
+        mercury.name = "mercury"
         mercury.position = SCNVector3(x: 0.3 ,y: 0, z: 0)
         rotateObject(rotation: 0.6, planet: mercury, duration: 0.4)
         rotateObject(rotation: 0.6, planet: mercuryRing, duration: 1)
         
         let venusRing = createRing(ringSize: 0.5)
         let venus = createPlanet(radius: 0.04, image: "venus")
+        venus.name = "venus"
         venus.position = SCNVector3(x:0.5 , y: 0, z: 0)
         rotateObject(rotation: 0.4, planet: venus, duration: 0.4)
         rotateObject(rotation: 0.4, planet: venusRing, duration: 1)
         
         let earthRing = createRing(ringSize: 0.7)
         let earth = createPlanet(radius: 0.05, image: "earth")
+        earth.name = "earth"
         earth.position = SCNVector3(x:0.7 , y: 0, z: 0)
         rotateObject(rotation: 0.25, planet: earth, duration: 0.4)
         rotateObject(rotation: 0.25, planet: earthRing, duration: 1)
@@ -49,18 +58,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let marsRing = createRing(ringSize: 0.8)
         let mars = createPlanet(radius: 0.03, image: "mars")
+        mars.name = "mars"
         mars.position = SCNVector3(x:0.8 , y: 0, z: 0)
         rotateObject(rotation: 0.2, planet: mars, duration: 0.4)
         rotateObject(rotation: 0.2, planet: marsRing, duration: 1)
         
         let jupiterRing = createRing(ringSize: 1.0)
         let jupiter = createPlanet(radius: 0.03, image: "jupiter")
+        jupiter.name = "jupiter"
         jupiter.position = SCNVector3(x:1.0 , y: 0, z: 0)
         rotateObject(rotation: 0.15, planet: jupiter, duration: 0.4)
         rotateObject(rotation: 0.15, planet: jupiterRing, duration: 1)
         
         let saturnRing = createRing(ringSize: 1.2)
         let saturn = createPlanet(radius: 0.03, image: "saturn")
+        saturn.name = "saturn"
         saturn.position = SCNVector3(x:1.2 , y: 0, z: 0)
         rotateObject(rotation: 0.1, planet: saturn, duration: 0.4)
         rotateObject(rotation: 0.1, planet: saturnRing, duration: 1)
@@ -75,24 +87,28 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let uranusRing = createRing(ringSize: 1.4)
         let uranus = createPlanet(radius: 0.03, image: "uranus")
+        uranus.name = "uranus"
         uranus.position = SCNVector3(x:1.4, y: 0, z: 0)
         rotateObject(rotation: 0.05, planet: uranus, duration: 0.4)
         rotateObject(rotation: 0.05, planet: uranusRing, duration: 1)
         
         let neptuneRing = createRing(ringSize: 1.6)
         let neptune = createPlanet(radius: 0.03, image: "neptune")
+        neptune.name = "neptune"
         neptune.position = SCNVector3(x:1.6 , y: 0, z: 0)
         rotateObject(rotation: 0.01, planet: neptune, duration: 0.4)
         rotateObject(rotation: 0.01, planet: neptuneRing, duration: 1)
         
         let plutoRing = createRing(ringSize: 1.7)
         let pluto = createPlanet(radius: 0.03, image: "pluto")
+        pluto.name = "pluto"
         pluto.position = SCNVector3(x:1.7 , y: 0, z: 0)
         rotateObject(rotation: 0.005, planet: pluto, duration: 0.4)
         rotateObject(rotation: 0.005, planet: plutoRing, duration: 1)
         
         
         let moon = createPlanet(radius: 0.01, image: "moon")
+        moon.name = "moon"
         let moonRing = SCNTorus(ringRadius: 0.08, pipeRadius: 0.00001)
         let moonRingNode = SCNNode(geometry: moonRing)
         
@@ -131,6 +147,48 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scene
         sceneView.scene.rootNode.addChildNode(baseNode)
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(checkNodeHit(_:)))
+        tapGesture.numberOfTapsRequired = 1
+        self.view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func checkNodeHit(_ gesture: UITapGestureRecognizer){
+
+        //1. Get The Current Touch Location In The View
+        let currentTouchLocation = gesture.location(in: self.sceneView)
+
+        //2. Perform An SCNHitTest To Determine If We Have Hit An SCNNode
+        guard let hitTestNode = self.sceneView.hitTest(currentTouchLocation, options: nil).first?.node else { return }
+        
+        switch hitTestNode.name {
+        case "sun" :
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "mercury":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "venus":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "earth":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "mars":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+         case "jupiter":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "saturn":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "uranus":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "neptune":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        case "pluto":
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        default:
+             print("None clicked")
+        }
+
+        if hitTestNode.name == "sun"{
+            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+        }
     }
     
     func createPlanet(radius: Float, image: String) -> SCNNode{
