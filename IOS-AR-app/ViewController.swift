@@ -8,8 +8,10 @@
 
 //TODO:
 // Add Details of planets when clicked on
-// Landing page?
-// Possibly reposition the sun
+// Add Saturns ring when zoomed
+// Add moons to full scale and zoomed versions
+// Add lighting effects coming from sun
+// Refactor into more modular code 
 
 import UIKit
 import SceneKit
