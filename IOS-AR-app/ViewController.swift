@@ -171,10 +171,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sun.position = SCNVector3(x:0, y:0, z:0)
             rotateObject(rotation: -0.3, planet: sun, duration: 1)
             
-            let text = createTextBox(height: 1, length: 1, image: "text")
-            self.addToScreen(node: text)
-
+            let text = createTextBox(height: 0.5, length: 0.5, image: "text")
             self.addToScreen(node: sun)
+            self.addToScreen(node: text)
             
         case "mercury":
             self.clearScreen()
@@ -211,10 +210,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             moon.position = SCNVector3(x:1.0 , y: 0, z: 0)
             moonRingNode.position = SCNVector3(x:0.0 , y: 0.02, z: 0)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "Earth3")
+        
             moonRingNode.addChildNode(moon)
             earth.addChildNode(moonRingNode)
             
             self.addToScreen(node: earth)
+            self.addToScreen(node: text)
             
         case "mars":
             self.clearScreen()
@@ -301,12 +303,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     func createTextBox(height: CGFloat, length: CGFloat, image: String) -> SCNNode{
-        let box = SCNBox(width: 0, height: height, length: length, chamferRadius: 0.1)
+        let box = SCNBox(width: height, height: length, length: 0.0, chamferRadius: 0.1)
         let material = SCNMaterial()
         material.diffuse.contents = UIImage(named: "\(image).png")
         box.materials = [material]
         
         let boxNode = SCNNode(geometry: box)
+        boxNode.position = SCNVector3(x: 0.0, y: 0.6, z: -0.2)
         
         return boxNode
     }
