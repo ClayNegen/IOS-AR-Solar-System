@@ -8,10 +8,14 @@
 
 //TODO:
 // Add Details of planets when clicked on
-// Add Saturns ring when zoomed
-// Add moons to full scale and zoomed versions
 // Add lighting effects coming from sun
 // Refactor into more modular code
+// Make the speeds/sizes/ distance  compared to the sun realalistic
+// Add all the moons to planets that have them.
+
+// ------------- Strech Goals -----------------
+// Ability to change the speed compared to real time
+
 
 import UIKit
 import SceneKit
@@ -231,10 +235,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         case "saturn":
             self.clearScreen()
             
-            let saturn = createPlanet(radius: 0.40, image: "saturn")
+            let saturn = createPlanet(radius: 0.4, image: "saturn")
             saturn.name = "zoom"
             saturn.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: saturn, duration: 1)
+            
+            let saturnLoop = SCNBox(width: 1.7, height: 0, length: 1.7, chamferRadius: 0)
+            let material = SCNMaterial()
+            material.diffuse.contents = UIImage(named:"saturnring.jpg")
+            saturnLoop.materials = [material]
+            
+            let loopNode = SCNNode(geometry: saturnLoop)
+            loopNode.position = SCNVector3(x:0,y:0,z:0)
+            
+            
+            saturn.addChildNode(loopNode)
             
             self.addToScreen(node: saturn)
         case "uranus":
