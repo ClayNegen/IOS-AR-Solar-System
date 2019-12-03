@@ -11,7 +11,7 @@
 // Add Saturns ring when zoomed
 // Add moons to full scale and zoomed versions
 // Add lighting effects coming from sun
-// Refactor into more modular code 
+// Refactor into more modular code
 
 import UIKit
 import SceneKit
@@ -169,7 +169,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sun.name = "zoom"
             sun.position = SCNVector3(x:0, y:0, z:0)
             rotateObject(rotation: -0.3, planet: sun, duration: 1)
-            
+
             self.addToScreen(node: sun)
             
         case "mercury":
@@ -291,6 +291,20 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return ringNode
     }
     
+    func clearScreen(){
+        sceneView.scene.rootNode.enumerateChildNodes {
+            (node, stop) in node.removeFromParentNode()
+        }
+    }
+    
+    func addToScreen(node: SCNNode){
+        baseNode.addChildNode(node)
+        
+        let scene = SCNScene()
+        sceneView.scene = scene
+        sceneView.scene.rootNode.addChildNode(baseNode)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
@@ -307,6 +321,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Pause the view's session
         sceneView.session.pause()
     }
+    
+    
 
     // MARK: - ARSCNViewDelegate
     
@@ -332,19 +348,5 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
-    }
-    
-    func clearScreen(){
-        sceneView.scene.rootNode.enumerateChildNodes {
-            (node, stop) in node.removeFromParentNode()
-        }
-    }
-    
-    func addToScreen(node: SCNNode){
-        baseNode.addChildNode(node)
-        
-        let scene = SCNScene()
-        sceneView.scene = scene
-        sceneView.scene.rootNode.addChildNode(baseNode)
     }
 }
