@@ -170,6 +170,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sun.name = "zoom"
             sun.position = SCNVector3(x:0, y:0, z:0)
             rotateObject(rotation: -0.3, planet: sun, duration: 1)
+            
+            let text = createTextBox(height: 1, length: 1, image: "text")
+            self.addToScreen(node: text)
 
             self.addToScreen(node: sun)
             
@@ -295,6 +298,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         
         return planetNode
+    }
+    
+    func createTextBox(height: CGFloat, length: CGFloat, image: String) -> SCNNode{
+        let box = SCNBox(width: 0, height: height, length: length, chamferRadius: 0.1)
+        let material = SCNMaterial()
+        material.diffuse.contents = UIImage(named: "\(image).png")
+        box.materials = [material]
+        
+        let boxNode = SCNNode(geometry: box)
+        
+        return boxNode
     }
     
     func rotateObject(rotation: Float, planet: SCNNode, duration: Float){
