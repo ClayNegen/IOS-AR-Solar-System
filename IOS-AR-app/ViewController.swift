@@ -1,4 +1,3 @@
-//
 //  ViewController.swift
 //  IOS-AR-app
 //
@@ -10,12 +9,11 @@
 // Add Details of planets when clicked on
 // Add lighting effects coming from sun
 // Refactor into more modular code
-// Make the speeds/sizes/ distance  compared to the sun realalistic
-// Add all the moons to planets that have them.
+// Make the speeds/sizes/ distance  compared to the sun realalistic (Maybe not)
+// Add all the moons to planets that have them. (maybe)
 
 // ------------- Strech Goals -----------------
-// Ability to change the speed compared to real time
-
+// Ability to change the speed compared to real time.
 
 import UIKit
 import SceneKit
@@ -36,7 +34,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        // sceneView.showsStatistics = true
+         sceneView.showsStatistics = true
     
         let sun = createPlanet(radius: 0.25, image: "sun")
         sun.name = "sun"
@@ -214,6 +212,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             earth.addChildNode(moonRingNode)
             
             self.addToScreen(node: earth)
+            
         case "mars":
             self.clearScreen()
             
