@@ -171,7 +171,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             sun.position = SCNVector3(x:0, y:0, z:0)
             rotateObject(rotation: -0.3, planet: sun, duration: 1)
             
-            let text = createTextBox(height: 0.5, length: 0.5, image: "text")
+            let text = createTextBox(height: 0.5, length: 0.5, image: "SunText")
+            
             self.addToScreen(node: sun)
             self.addToScreen(node: text)
             
@@ -183,7 +184,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             mercury.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: mercury, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "MercuryText")
+            
             self.addToScreen(node: mercury)
+            self.addToScreen(node: text)
             
         case "venus":
             self.clearScreen()
@@ -193,7 +197,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             venus.position = SCNVector3(x: 0.40 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: venus, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "VenusText")
+            
             self.addToScreen(node: venus)
+            self.addToScreen(node: text)
         case "earth":
             self.clearScreen()
             
@@ -210,7 +217,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             moon.position = SCNVector3(x:1.0 , y: 0, z: 0)
             moonRingNode.position = SCNVector3(x:0.0 , y: 0.02, z: 0)
             
-            let text = createTextBox(height: 0.5, length: 0.5, image: "Earth3")
+            let text = createTextBox(height: 0.5, length: 0.5, image: "EarthText")
         
             moonRingNode.addChildNode(moon)
             earth.addChildNode(moonRingNode)
@@ -226,7 +233,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             mars.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: mars, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "Marsext")
+            
             self.addToScreen(node: mars)
+            self.addToScreen(node: text)
          case "jupiter":
             self.clearScreen()
             
@@ -235,7 +245,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             jupiter.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: jupiter, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "JupiterText")
+            
             self.addToScreen(node: jupiter)
+            self.addToScreen(node: text)
         case "saturn":
             self.clearScreen()
             
@@ -252,10 +265,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let loopNode = SCNNode(geometry: saturnLoop)
             loopNode.position = SCNVector3(x:0,y:0,z:0)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "SaturnText")
             
             saturn.addChildNode(loopNode)
             
             self.addToScreen(node: saturn)
+            self.addToScreen(node: text)
         case "uranus":
             self.clearScreen()
             
@@ -264,7 +279,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             uranus.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: uranus, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "UranusText")
+            
             self.addToScreen(node: uranus)
+            self.addToScreen(node: text)
         case "neptune":
             self.clearScreen()
             
@@ -273,7 +291,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             neptune.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: neptune, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "NeptuneText")
+            
             self.addToScreen(node: neptune)
+            self.addToScreen(node: text)
         case "pluto":
             self.clearScreen()
             
@@ -282,7 +303,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             pluto.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: pluto, duration: 1)
             
+            let text = createTextBox(height: 0.5, length: 0.5, image: "PlutoText")
+            
             self.addToScreen(node: pluto)
+            self.addToScreen(node: text)
         case "zoom":
                 self.viewDidLoad()
         default:
