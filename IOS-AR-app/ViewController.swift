@@ -20,18 +20,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
         
     let baseNode = SCNNode()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.clearScreen()
         
         // Set the view's delegate
         sceneView.delegate = self
         
         // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
-        
+        // sceneView.showsStatistics = true
+    
         let sun = createPlanet(radius: 0.25, image: "sun")
         sun.name = "sun"
-        sun.position = SCNVector3(x:0,y:0,z:0)
+        sun.position = SCNVector3(x:0, y:0, z:0)
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
         let mercuryRing = createRing(ringSize: 0.3)
@@ -54,7 +57,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         earth.position = SCNVector3(x:0.7 , y: 0, z: 0)
         rotateObject(rotation: 0.25, planet: earth, duration: 0.4)
         rotateObject(rotation: 0.25, planet: earthRing, duration: 1)
-        
         
         let marsRing = createRing(ringSize: 0.8)
         let mars = createPlanet(radius: 0.03, image: "mars")
@@ -141,10 +143,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         baseNode.position = SCNVector3(x: 0 ,y: -0.5 ,z: -1)
         
-        // Create a new scene
         let scene = SCNScene()
-        
-        // Set the scene to the view
         sceneView.scene = scene
         sceneView.scene.rootNode.addChildNode(baseNode)
         
@@ -155,39 +154,108 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     @objc func checkNodeHit(_ gesture: UITapGestureRecognizer){
 
-        //1. Get The Current Touch Location In The View
         let currentTouchLocation = gesture.location(in: self.sceneView)
 
-        //2. Perform An SCNHitTest To Determine If We Have Hit An SCNNode
         guard let hitTestNode = self.sceneView.hitTest(currentTouchLocation, options: nil).first?.node else { return }
         
         switch hitTestNode.name {
         case "sun" :
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            
+            self.clearScreen()
+            
+            let sun = createPlanet(radius: 0.40, image: "sun")
+            sun.name = "zoom"
+            sun.position = SCNVector3(x:0, y:0, z:0)
+            rotateObject(rotation: -0.3, planet: sun, duration: 1)
+            
+            self.addToScreen(node: sun)
+            
         case "mercury":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let mercury = createPlanet(radius: 0.40, image: "mercury")
+            mercury.name = "zoom"
+            mercury.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: mercury, duration: 1)
+            
+            self.addToScreen(node: mercury)
+            
         case "venus":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let venus = createPlanet(radius: 0.40, image: "venus")
+            venus.name = "zoom"
+            venus.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: venus, duration: 1)
+            
+            self.addToScreen(node: venus)
         case "earth":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let earth = createPlanet(radius: 0.40, image: "earth")
+            earth.name = "zoom"
+            earth.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: earth, duration: 1)
+            
+            self.addToScreen(node: earth)
         case "mars":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let mars = createPlanet(radius: 0.40, image: "mars")
+            mars.name = "zoom"
+            mars.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: mars, duration: 1)
+            
+            self.addToScreen(node: mars)
          case "jupiter":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let jupiter = createPlanet(radius: 0.40, image: "jupiter")
+            jupiter.name = "zoom"
+            jupiter.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: jupiter, duration: 1)
+            
+            self.addToScreen(node: jupiter)
         case "saturn":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let saturn = createPlanet(radius: 0.40, image: "saturn")
+            saturn.name = "zoom"
+            saturn.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: saturn, duration: 1)
+            
+            self.addToScreen(node: saturn)
         case "uranus":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let uranus = createPlanet(radius: 0.40, image: "uranus")
+            uranus.name = "zoom"
+            uranus.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: uranus, duration: 1)
+            
+            self.addToScreen(node: uranus)
         case "neptune":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let neptune = createPlanet(radius: 0.40, image: "neptune")
+            neptune.name = "zoom"
+            neptune.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: neptune, duration: 1)
+            
+            self.addToScreen(node: neptune)
         case "pluto":
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            self.clearScreen()
+            
+            let pluto = createPlanet(radius: 0.40, image: "pluto")
+            pluto.name = "zoom"
+            pluto.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            rotateObject(rotation: 0.3, planet: pluto, duration: 1)
+            
+            self.addToScreen(node: pluto)
+        case "zoom":
+                self.viewDidLoad()
         default:
-             print("None clicked")
-        }
-
-        if hitTestNode.name == "sun"{
-            print("The User Has Successfuly Tapped On \(hitTestNode.name!)")
+            print("no")
         }
     }
     
@@ -262,5 +330,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     func sessionInterruptionEnded(_ session: ARSession) {
         // Reset tracking and/or remove existing anchors if consistent tracking is required
         
+    }
+    
+    func clearScreen(){
+        sceneView.scene.rootNode.enumerateChildNodes {
+            (node, stop) in node.removeFromParentNode()
+        }
+    }
+    
+    func addToScreen(node: SCNNode){
+        baseNode.addChildNode(node)
+        
+        let scene = SCNScene()
+        sceneView.scene = scene
+        sceneView.scene.rootNode.addChildNode(baseNode)
     }
 }
