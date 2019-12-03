@@ -60,6 +60,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.25, planet: earth, duration: 0.4)
         rotateObject(rotation: 0.25, planet: earthRing, duration: 1)
         
+        let moon = createPlanet(radius: 0.01, image: "moon")
+        moon.name = "moon"
+        let moonRing = SCNTorus(ringRadius: 0.08, pipeRadius: 0.00001)
+        let moonRingNode = SCNNode(geometry: moonRing)
+        
+        moon.position = SCNVector3(x:0.08 , y: 0, z: 0)
+        moonRingNode.position = SCNVector3(x:0.0 , y: 0.02, z: 0)
+        
         let marsRing = createRing(ringSize: 0.8)
         let mars = createPlanet(radius: 0.03, image: "mars")
         mars.name = "mars"
@@ -110,19 +118,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rotateObject(rotation: 0.005, planet: pluto, duration: 0.4)
         rotateObject(rotation: 0.005, planet: plutoRing, duration: 1)
         
-        
-        let moon = createPlanet(radius: 0.01, image: "moon")
-        moon.name = "moon"
-        let moonRing = SCNTorus(ringRadius: 0.08, pipeRadius: 0.00001)
-        let moonRingNode = SCNNode(geometry: moonRing)
-        
-        moon.position = SCNVector3(x:0.08 , y: 0, z: 0)
-        moonRingNode.position = SCNVector3(x:0.0 , y: 0.02, z: 0)
-        
-        moonRingNode.addChildNode(moon)
         mercuryRing.addChildNode(mercury)
         venusRing.addChildNode(venus)
         earthRing.addChildNode(earth)
+        moonRingNode.addChildNode(moon)
         earth.addChildNode(moonRingNode)
         marsRing.addChildNode(mars)
         jupiterRing.addChildNode(jupiter)
@@ -187,7 +186,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let venus = createPlanet(radius: 0.40, image: "venus")
             venus.name = "zoom"
-            venus.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
+            venus.position = SCNVector3(x: 0.40 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: venus, duration: 1)
             
             self.addToScreen(node: venus)
@@ -198,6 +197,17 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             earth.name = "zoom"
             earth.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: earth, duration: 1)
+            
+            let moon = createPlanet(radius: 0.1, image: "moon")
+            moon.name = "moon"
+            let moonRing = SCNTorus(ringRadius: 1.0, pipeRadius: 0.001)
+            let moonRingNode = SCNNode(geometry: moonRing)
+            
+            moon.position = SCNVector3(x:1.0 , y: 0, z: 0)
+            moonRingNode.position = SCNVector3(x:0.0 , y: 0.02, z: 0)
+            
+            moonRingNode.addChildNode(moon)
+            earth.addChildNode(moonRingNode)
             
             self.addToScreen(node: earth)
         case "mars":
