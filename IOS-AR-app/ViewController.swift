@@ -41,6 +41,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sun.position = SCNVector3(x:0, y:0, z:0)
         rotateObject(rotation: -0.3, planet: sun, duration: 1)
         
+//        sun.light = addLightSource(position: sun.position)
+//        sun.categoryBitMask = 1
+        
         let mercuryRing = createRing(ringSize: 0.3)
         let mercury = createPlanet(radius: 0.03, image: "mercury")
         mercury.name = "mercury"
@@ -194,7 +197,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let venus = createPlanet(radius: 0.40, image: "venus")
             venus.name = "zoom"
-            venus.position = SCNVector3(x: 0.40 ,y: 0, z: 0)
+            venus.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: venus, duration: 1)
             
             let text = createTextBox(height: 0.5, length: 0.5, image: "VenusText")
@@ -233,7 +236,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             mars.position = SCNVector3(x: 0.0 ,y: 0, z: 0)
             rotateObject(rotation: 0.3, planet: mars, duration: 1)
             
-            let text = createTextBox(height: 0.5, length: 0.5, image: "Marsext")
+            let text = createTextBox(height: 0.5, length: 0.5, image: "MarsText")
             
             self.addToScreen(node: mars)
             self.addToScreen(node: text)
@@ -368,6 +371,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let scene = SCNScene()
         sceneView.scene = scene
         sceneView.scene.rootNode.addChildNode(baseNode)
+    }
+    
+    func addLightSource(position: SCNVector3) -> SCNLight {
+        let light = SCNLight()
+        light.type = .omni
+        light.intensity = 5000
+        light.categoryBitMask = 1
+        light.temperature = CGFloat(2000)
+        return light
     }
     
     override func viewWillAppear(_ animated: Bool) {
