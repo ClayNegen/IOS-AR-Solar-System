@@ -1,11 +1,8 @@
-Solar System SceneKit
 A Demo App by: Cole Sellers + Clay Negen
-Overview
+#### Overview
 SceneKit is a high-level 3D graphics framework that helps you create 3D animated scenes and effects in your apps. It incorporates a physics engine, a particle generator, and easy ways to script the actions of 3D objects so you can describe your scene in terms of its content — geometry, materials, lights, and cameras — then animate it by describing changes to those objects. We have created a tutorial that will teach you how to start learning the SceneKit and all it incorporates all in one app! Our demo app is a solar system comprised of the plants and star found in the milky way galaxy displayed as Augmented Reality through the camera on an IPhone. The solar system is fully equipped with motion, texture mapping (to make the planets look real) and add new features. We utilize Xcode to create our IOS project and Swift to program the application. We will be taking your through step by step on how to create the project, the planets, the motion, and even making your solar system look like our very own.
 
- 
-
-Getting Started
+#### Getting Started
 First you will need to download XCode from the apple website. This can be found at https://developer.apple.com/xcode/. We recommend XCode 10 or above, but we will be doing this tutorial on the newest version, XCode 11. Additionally image files for the planet Materials can be found here: http://planetpixelemporium.com/planets.html. 
 
 Once you have XCode downloaded open it up and select the “Create New Project” option, this will open up XCode’s main page. You will be faced with several templates to choose from, select the Augmented Reality App and click next.
@@ -35,7 +32,7 @@ Then we are ready to get started building our Solar System!
 
 
 
-Coding Instructions
+#### Coding Instructions
 After you have completed the above steps to get an empty SceneKit application created you should be ready to begin. 
 
 The first step is to create a global base node using SCNNode() method. This method will create a point on your display in order to attach object, lights, or other displayable content to. 
@@ -115,10 +112,11 @@ As you can tell it very similar to adding the other nodes except you are doing a
 
 
 After the above step is completed for every planet you should have a fully functional solar system with the ability to enlarge any planet.
-Conclusion
+
+#### Conclusion
 Overall, the SceneKit was really interesting to work with, and pairing it with Augmented Reality can create some cool ideas for mobile development projects. If you followed along with our tutorial you should have a good grasp of how to create and stylize 3D objects and how to place them into reality with nodes. This is a great basis for creating future projects, as so much can be done with these simple understandings. If you want to complete the full tutorial or see the finalized product the code for the project is located at https://github.com/ClayNegen/IOS-AR-Solar-System. 
 
-Links:
+# Links:
 https://developer.apple.com/scenekit/
 https://developer.apple.com/xcode/
 http://planetpixelemporium.com/planets.html
